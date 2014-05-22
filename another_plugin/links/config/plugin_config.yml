@@ -1,0 +1,23 @@
+defaults: &defaults
+  bookmark:
+    share_by_email:
+      share_name: 'Email' 	
+      mount_point: '/share'
+      resource_point : '/mail'
+    share_by_fb:
+      share_name: 'Facebook' 	
+      mount_point: '/share'
+      resource_point : '/facebook'
+    share_by_twitter:
+      share_name: 'Twitter' 	
+      mount_point: '/share'
+      resource_point : '/twitter'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>All My Links</title> </head>
+	<%= link_to 'Logout', url_for(:controller => 'sessions', :action => 'logout') %>
+	<body>
+		<h1>All My Links</h1> 
+		<ul>
+			<% for link in @links %>
+				<li>
+					<a href="/links/<%= link.id %>"><%= link.title %></a> 
+					<% for bookmark_plugin_key in @bookmark_plugins.keys %>
+						<%														
+							bookmark_plugin =  @bookmark_plugins[bookmark_plugin_key]							
+							mount_point = bookmark_plugin['mount_point']
+							resource_point = bookmark_plugin['resource_point']
+							share_name = bookmark_plugin['share_name']
+							url = mount_point + resource_point + '/title/' + CGI.escape(link.title) + '/link/' + CGI.escape(link.url)
+						%>
+						<%= link_to share_name, url, :target => "_blank" %>						
+					<% end %>
+				</li> 
+			<% end %>
+		</ul>
+		<%= link_to 'Add New Link', url_for(:controller => 'links', :action => 'new') %>
+	</body>
+</html>
