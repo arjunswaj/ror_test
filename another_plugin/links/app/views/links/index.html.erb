@@ -10,13 +10,16 @@
 					<a href="/links/<%= link.id %>"><%= link.title %></a> 
 					<% for bookmark_plugin_key in @bookmark_plugins.keys %>
 						<%														
-							bookmark_plugin =  @bookmark_plugins[bookmark_plugin_key]							
-							mount_point = bookmark_plugin['mount_point']
-							resource_point = bookmark_plugin['resource_point']
-							share_name = bookmark_plugin['share_name']
-							url = mount_point + resource_point + '/title/' + CGI.escape(link.title) + '/link/' + CGI.escape(link.url)
+							bookmark_plugin =  @bookmark_plugins[bookmark_plugin_key]	
+							if bookmark_plugin['enabled']
+								puts bookmark_plugin					
+								mount_point = bookmark_plugin['mount_point']
+								resource_point = bookmark_plugin['resource_point']
+								share_name = bookmark_plugin['share_name']
+								url = mount_point + resource_point + '/title/' + CGI.escape(link.title) + '/link/' + CGI.escape(link.url)
 						%>
-						<%= link_to share_name, url, :target => "_blank" %>						
+								<%= link_to share_name, url, :target => "_blank" %>						
+							<% end %>
 					<% end %>
 				</li> 
 			<% end %>

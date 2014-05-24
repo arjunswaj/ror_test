@@ -1,6 +1,8 @@
 Links::Application.routes.draw do
 
-  mount Share::Engine, at: "/share"
+  mount Share::Engine, :at => "/share"
+  mount Ads::Engine, :at => "/ad"
+  
   get "welcome/index"
   root to: "welcome#index"
   

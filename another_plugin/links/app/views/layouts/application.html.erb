@@ -30,16 +30,33 @@
 		<div class="row">
 			<div class="span9"><%= yield %></div>
 			<div class="span3">
-				<h1>About Us</h1>
-				Traditional bookmarking services do not allow storing information on private servers. The application should allow deploying a local server which is capable of the following for every user/client:
-				<ul>
-					<li>Bookmarking URLs</li>
-					<li>Tagging the URLs</li>
-					<li>Searching among the links</li>
-					<li>Annotations for a given URL</li>
-					<li>Multi-user</li>
-					<li>Expose an API</li>
-				</ul>
+				<div>
+					<h1>About Us</h1>
+					Traditional bookmarking services do not allow storing information on private servers. The application should allow deploying a local server which is capable of the following for every user/client:
+					<ul>
+						<li>Bookmarking URLs</li>
+						<li>Tagging the URLs</li>
+						<li>Searching among the links</li>
+						<li>Annotations for a given URL</li>
+						<li>Multi-user</li>
+						<li>Expose an API</li>
+					</ul>
+				</div>
+				<div>
+					
+						<% @page_plugins = PLUGIN_CONFIG['pages'] %>
+						<% for page_plugin_key in @page_plugins.keys %>
+							<%														
+								page_plugin =  @page_plugins[page_plugin_key]														
+								resource_point = page_plugin['resource_point']							
+							%>
+							<div>
+								<% if page_plugin['enabled'] %>
+									<%= render resource_point %>
+								<% end %>
+							</div>
+						<% end %>								
+				</div>
 			</div>			
 		</div>		
 	</div>

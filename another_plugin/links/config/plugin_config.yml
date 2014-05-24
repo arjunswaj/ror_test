@@ -1,17 +1,27 @@
 defaults: &defaults
   bookmark:
     share_by_email:
-      share_name: 'Email' 	
+      enabled: true
+      share_name: 'Email'   
       mount_point: '/share'
       resource_point : '/mail'
     share_by_fb:
-      share_name: 'Facebook' 	
+      enabled: true
+      share_name: 'Facebook'  
       mount_point: '/share'
       resource_point : '/facebook'
     share_by_twitter:
-      share_name: 'Twitter' 	
+      enabled: false
+      share_name: 'Twitter'   
       mount_point: '/share'
       resource_point : '/twitter'
+  pages:
+    ads_for_page:
+      enabled: true
+      resource_point: 'ads/pages/index'
+    yet_another_ads_for_page:
+      enabled: false
+      resource_point: 'ads/pages/index'
 
 development:
   <<: *defaults
